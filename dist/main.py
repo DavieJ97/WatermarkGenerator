@@ -64,7 +64,12 @@ class Main_display:
         self.watermark_text.insert(0, "Enter text")
         self.watermark_text.bind("<FocusIn>", self.on_entry_focus_in)
         self.watermark_text.bind("<FocusOut>", self.on_entry_focus_out)
-        self.watermark_text.pack(pady=5)
+        self.watermark_text.pack(pady=10)
+
+        self.text_size_label = tk.Label(self.content_frame, text="Choose the size of your text.", font=("Libra Baskerville", 30))
+        self.text_size_label.pack(pady=10)
+        self.text_size_bar = tk.Scale(self.content_frame, from_=11, to=170, orient="horizontal", length=700)
+        self.text_size_bar.pack(pady=5)
 
         self.choose_image_label = tk.Label(self.content_frame, text="Choose an Image", font=("Great Vibes", 40), bg="#e2ecec")
         self.choose_image_label.pack()
@@ -100,14 +105,15 @@ class Main_display:
             )
         if file_path:
             watermark_text = self.watermark_text.get()
+            text_size = self.text_size_bar.get()
             self.root.withdraw()
             selected_value = self.selected_var.get()
             if selected_value == 0:
-                show_pic_diagonal(root=self.root, pic_url=file_path, text=watermark_text) 
+                show_pic_diagonal(root=self.root, pic_url=file_path, text=watermark_text, text_size=text_size) 
             elif selected_value == 1:
-                show_pic_straight(root=self.root, pic_url=file_path, text=watermark_text)
+                show_pic_straight(root=self.root, pic_url=file_path, text=watermark_text, text_size=text_size)
             elif selected_value == 2:
-                show_pic_bottem_right(root= self.root, pic_url=file_path, text=watermark_text)
+                show_pic_bottem_right(root= self.root, pic_url=file_path, text=watermark_text, text_size=text_size)
     
     def on_entry_focus_in(self, event):
         if event.widget.get() == "Enter text":  # Placeholder text

@@ -3,7 +3,7 @@ from tkinter import filedialog, messagebox
 from PIL import Image, ImageDraw, ImageFont, ImageTk
 
 
-def show_pic_diagonal(root, pic_url, text):
+def show_pic_diagonal(root, pic_url, text, text_size):
     def download_pic():
         save_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg;*.jpeg")])
         if save_path:
@@ -46,7 +46,7 @@ def show_pic_diagonal(root, pic_url, text):
     text_overlay = Image.new("RGBA", (img_width, img_height), (0, 0, 0, 0))
     draw = ImageDraw.Draw(text_overlay)
     font_path = "C:/Windows/Fonts/arial.ttf"  # Replace with the path to your .ttf font file
-    text_size = int(min(img_width, img_height) * 0.5)
+    text_size = int(text_size)
     try:
         font = ImageFont.truetype(font_path, text_size)  # Size 36
     except OSError:
@@ -83,7 +83,7 @@ def show_pic_diagonal(root, pic_url, text):
     top.mainloop()
 
 
-def show_pic_straight(root, pic_url, text):
+def show_pic_straight(root, pic_url, text, text_size):
     def download_pic():
         save_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg;*.jpeg")])
         if save_path:
@@ -126,7 +126,7 @@ def show_pic_straight(root, pic_url, text):
     text_overlay = Image.new("RGBA", (img_width, img_height), (0, 0, 0, 0))
     draw = ImageDraw.Draw(text_overlay)
     font_path = "C:/Windows/Fonts/arial.ttf"  # Replace with the path to your .ttf font file
-    text_size = int(min(img_width, img_height) * 0.5)
+    text_size = int(text_size)
     try:
         font = ImageFont.truetype(font_path, text_size)  # Size 36
     except OSError:
@@ -163,7 +163,7 @@ def show_pic_straight(root, pic_url, text):
     top.mainloop()
 
 
-def show_pic_bottem_right(root, pic_url, text):
+def show_pic_bottem_right(root, pic_url, text, text_size):
     def download_pic():
         save_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg;*.jpeg")])
         if save_path:
@@ -205,9 +205,9 @@ def show_pic_bottem_right(root, pic_url, text):
     img_width, img_height = img.size
     draw = ImageDraw.Draw(img)
     font_path = "C:/Users/user/AppData/Local/Microsoft/Windows/Fonts/GreatVibes-Regular.ttf"  # Replace with the path to your .ttf font file
-    text_size = int(min(img_width, img_height) * 0.15)
+    text_size = int(text_size)
     try:
-        font = ImageFont.truetype(font_path, text_size)  # Size 36
+        font = ImageFont.truetype(font_path, text_size) 
     except OSError:
         print("Font not found. Using default font.")
         font = ImageFont.load_default()
